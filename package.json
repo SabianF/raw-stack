@@ -1,0 +1,17 @@
+{
+  "name": "raw-stack",
+  "version": "1.0.0",
+  "description": "A barebones web development stack (maybe a custom framework who knows)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest --maxWorkers=50%",
+    "test:watch": "jest --watch --maxWorkers=25%",
+    "test:ci": "jest --runInBand",
+
+    "watch": "nodemon index.js",
+    "dev": "node index.js"
+  },
+  "author": "Sabian Finogwar",
+  "license": "MIT"
+}
