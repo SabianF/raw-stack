@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="favicon.png">
+  <meta name="description" content="{{description}}" />
+</head>
+<body>
+  {{#custom_header}}
+    {{&.}}
+  {{/custom_header}}
+  {{^custom_header}}
+    <header>
+      <nav id="header_bar">
+        <ul>
+          {{#nav_menu_links}}
+            <li><a href="{{href}}">{{name}}</a></li>
+          {{/nav_menu_links}}
+          {{^nav_menu_links}}
+            <li><a href="/">Home</a></li>
+          {{/nav_menu_links}}
+        </ul>
+      </nav>
+    </header>
+  {{/custom_header}}
+  <main>
+    {{#body}}
+      {{&.}}
+    {{/body}}
+    {{^body}}
+      <p>No page body</p>
+    {{/body}}
+  </main>
+  {{#custom_footer}}
+    {{&.}}
+  {{/custom_footer}}
+  {{^custom_footer}}
+    <footer id="footer_bar"></footer>
+    <script>
+      footer_bar.innerHTML = new Date().toDateString();
+    </script>
+  {{/custom_footer}}
+  <!--[if IE]><div style="width: 100%; position: fixed; z-index: 1000; bottom: 0; left: 0; background: lightgray;"><p>Outdated browser dectected. Please use a modern browser for a better browsing experience.</p><div onClick="parentNode.remove()">Close [X]</div></div><![endif]-->
+</body>
+</html>

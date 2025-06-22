@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import RoutesRepo from "./src/data/repositories/routes.js";
 import Route from "./src/data/models/route.js";
+import pages from "./src/presentation/templates/pages.js";
 
 function runApp() {
   dotenv.config();
@@ -13,8 +14,9 @@ function runApp() {
       name: "Home",
       method: "GET",
       route: "/",
-      handler: (request, response, next) => {
-        response.send("Hello");
+      handler: async (request, response, next) => {
+        const home_page = await pages.home();
+        response.send(home_page);
       },
     }),
   ]);
