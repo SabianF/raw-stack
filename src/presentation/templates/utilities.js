@@ -49,6 +49,10 @@ export async function getFileAsString(path) {
  * @param {object} props placeholders to replace with data
  */
 export function renderHtml(html_string, props) {
+  if (!html_string) {
+    return "";
+  }
+
   const rendered_html = mustache.render(html_string, props);
   return rendered_html;
 }
@@ -60,6 +64,10 @@ export function renderHtml(html_string, props) {
  * @param {string} props.id snake_case identifier for the style tag
  */
 export async function renderCss(css_string, props) {
+  if (!css_string) {
+    return "";
+  }
+
   if (
     !props.id ||
     props.id.length === 0 ||

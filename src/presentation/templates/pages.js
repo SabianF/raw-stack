@@ -4,7 +4,7 @@ async function home() {
   const layout = await components.layout({
     title: "Home",
     description: "The home page",
-    body: undefined,
+    body: undefined
   });
 
   return layout;
