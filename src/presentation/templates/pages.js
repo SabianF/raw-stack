@@ -1,14 +1,4 @@
-import components from "./components.js";
-
-async function home() {
-  const layout = await components.layout({
-    title: "Home",
-    description: "The home page",
-    body: undefined
-  });
-
-  return layout;
-}
+import home from "./pages/home.js";
 
 export default {
   home,
