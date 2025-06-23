@@ -1,4 +1,4 @@
-import { getAndRenderCss, getAndRenderHtml } from "./utilities.js";
+import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "./utilities.js";
 
 const BASE_PATH = "src/presentation/templates/components";
 
@@ -17,16 +17,25 @@ const BASE_PATH = "src/presentation/templates/components";
  * @param {string} props.custom_footer
  */
 async function layout(props) {
-  props.id = layout.name;
+  const layout_name = layout.name;
 
-  const rendered_layout_css = await getAndRenderCss(BASE_PATH + `/${layout.name}.css`, props);
+  props.id = layout_name;
+
+  const rendered_layout_css = await getAndRenderCss(BASE_PATH + `/${layout_name}.css`, props);
   if (!props.critical_css) {
     props.critical_css = rendered_layout_css;
   } else {
     props.critical_css = rendered_layout_css + props.critical_css;
   }
 
-  const rendered_layout = await getAndRenderHtml(BASE_PATH + `/${layout.name}.html`, props);
+  const rendered_layout_scripts = await getAndRenderJs(BASE_PATH + `/${layout_name}.js`, props);
+  if (!props.critical_scripts) {
+    props.critical_scripts = rendered_layout_scripts;
+  } else {
+    props.critical_scripts = rendered_layout_scripts + props.critical_scripts;
+  }
+
+  const rendered_layout = await getAndRenderHtml(BASE_PATH + `/${layout_name}.html`, props);
   return rendered_layout;
 }
 
