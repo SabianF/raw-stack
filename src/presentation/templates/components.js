@@ -18,24 +18,27 @@ const BASE_PATH = "src/presentation/templates/components";
  */
 async function layout(props) {
   const layout_name = layout.name;
-
   props.id = layout_name;
+  const rendered_layout = await renderComponent(layout_name, props);
+  return rendered_layout;
+}
 
-  const rendered_layout_css = await getAndRenderCss(BASE_PATH + `/${layout_name}.css`, props);
+async function renderComponent(component_name, props) {
+  const rendered_layout_css = await getAndRenderCss(BASE_PATH + `/${component_name}.css`, props);
   if (!props.critical_css) {
     props.critical_css = rendered_layout_css;
   } else {
     props.critical_css = rendered_layout_css + props.critical_css;
   }
 
-  const rendered_layout_scripts = await getAndRenderJs(BASE_PATH + `/${layout_name}.js`, props);
+  const rendered_layout_scripts = await getAndRenderJs(BASE_PATH + `/${component_name}.js`, props);
   if (!props.critical_scripts) {
     props.critical_scripts = rendered_layout_scripts;
   } else {
     props.critical_scripts = rendered_layout_scripts + props.critical_scripts;
   }
 
-  const rendered_layout = await getAndRenderHtml(BASE_PATH + `/${layout_name}.html`, props);
+  const rendered_layout = await getAndRenderHtml(BASE_PATH + `/${component_name}.html`, props);
   return rendered_layout;
 }
 
