@@ -63,7 +63,7 @@ export function renderHtml(html_string, props) {
   }
 
   const rendered_html = mustache.render(html_string, props);
-  return rendered_html;
+  return minify(rendered_html);
 }
 
 /**
@@ -95,7 +95,7 @@ export async function renderCss(css_string, props) {
     css: css_string,
   });
 
-  return rendered_css;
+  return minify(rendered_css);
 }
 
 /**
@@ -127,5 +127,15 @@ export async function renderJs(js_string, props) {
     js: js_string,
   });
 
-  return rendered_js;
+  return minify(rendered_js);
+}
+
+/**
+ *
+ * @param {string} file_string
+ */
+function minify(file_string) {
+  const trimmed = file_string.trim();
+  const replaced = trimmed.replace(/\r\n|\n|\r|[ \t\s]{2,}/gm, "");
+  return replaced;
 }
