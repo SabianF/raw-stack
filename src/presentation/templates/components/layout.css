@@ -1,0 +1,9 @@
+body > header > nav {
+  background-color: #222222;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+body > header > nav > ul > li:hover {
+  background-color: #333333;
+}
