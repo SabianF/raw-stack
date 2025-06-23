@@ -43,16 +43,25 @@
     {{&.}}
   {{/custom_footer}}
   {{^custom_footer}}
-    <footer></footer>
+    <footer>
+      <p>
+        Copyright <span id="footer_copyright_year"></span> Sabian Finogwar. All rights reserved
+      </p>
+      <p>
+        <span id="footer_timestamp"></span>
+      </p>
+    </footer>
     <script>
       {
-        const footer = document.currentScript.previousElementSibling;
         const date = new Date();
         const timezone = ` (${Intl.DateTimeFormat().resolvedOptions().timeZone})`;
-        footer.innerHTML = date.toLocaleString() + timezone;
+
+        footer_copyright_year.innerHTML = date.getFullYear();
+        footer_timestamp.innerHTML = date.toLocaleString() + timezone;
+
         setInterval(() => {
           const date = new Date();
-          footer.innerHTML = date.toLocaleString() + timezone;
+          footer_timestamp.innerHTML = date.toLocaleString() + timezone;
         }, 1000);
       }
     </script>
