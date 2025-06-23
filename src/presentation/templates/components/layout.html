@@ -47,9 +47,12 @@
     <script>
       {
         const footer = document.currentScript.previousElementSibling;
-        footer.innerHTML = new Date().toISOString();
+        const date = new Date();
+        const timezone = ` (${Intl.DateTimeFormat().resolvedOptions().timeZone})`;
+        footer.innerHTML = date.toLocaleString() + timezone;
         setInterval(() => {
-          footer.innerHTML = new Date().toISOString();
+          const date = new Date();
+          footer.innerHTML = date.toLocaleString() + timezone;
         }, 1000);
       }
     </script>
