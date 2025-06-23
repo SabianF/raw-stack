@@ -3,12 +3,27 @@ import express from "express";
 import RoutesRepo from "./src/data/repositories/routes.js";
 import Route from "./src/data/models/route.js";
 import pages from "./src/presentation/templates/pages.js";
+import MiddlewareRepo from "./src/data/repositories/middleware.js";
+import Middleware from "./src/data/models/middleware.js";
+import logRequests from "./src/data/sources/logger.js";
 
 function runApp() {
   dotenv.config();
 
   const router = express();
   const port = process.env.PORT;
+
+  const middleware_repo = new MiddlewareRepo([
+    new Middleware({
+      name: "Request logger",
+      handler: logRequests,
+    }),
+    new Middleware({
+      name: "Static file server",
+      handler: express.static("src/data/sources/public"),
+    })
+  ]);
+
   const routes_repo = new RoutesRepo([
     new Route({
       name: "Home",
@@ -21,6 +36,7 @@ function runApp() {
     }),
   ]);
 
+  middleware_repo.handleMiddleware(router);
   routes_repo.handleRoutes(router);
 
   router.listen(port, () => {

@@ -18,11 +18,15 @@ import { getAndRenderCss, getAndRenderJs } from "../utilities.js";
 export default async function layout(props) {
   const layout_name = layout.name;
 
+  const default_css = [
+    `<link rel="stylesheet" href="css/pico.classless.min.css">`
+  ].join("");
+
   props.id = layout_name;
 
   const rendered_layout_css = await getAndRenderCss(BASE_PATH + `/${layout_name}.css`, props);
   if (!props.critical_css) {
-    props.critical_css = rendered_layout_css;
+    props.critical_css = default_css + rendered_layout_css;
   } else {
     props.critical_css = rendered_layout_css + props.critical_css;
   }
