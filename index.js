@@ -15,7 +15,7 @@ function runApp() {
       method: "GET",
       route: "/",
       handler: async (request, response, next) => {
-        const home_page = await pages.home();
+        const home_page = await pages.home({});
         response.send(home_page);
       },
     }),
