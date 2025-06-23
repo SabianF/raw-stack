@@ -13,6 +13,15 @@ function runApp() {
   const router = express();
   const port = process.env.PORT;
 
+  includeMiddleware(router);
+  includeRoutes(router);
+
+  router.listen(port, () => {
+    console.log(`Server started at http://localhost:${port}/`);
+  });
+}
+
+function includeMiddleware(router) {
   const middleware_repo = new MiddlewareRepo([
     new Middleware({
       name: "Request logger",
@@ -24,6 +33,10 @@ function runApp() {
     })
   ]);
 
+  middleware_repo.handleMiddleware(router);
+}
+
+function includeRoutes(router) {
   const routes_repo = new RoutesRepo([
     new Route({
       name: "Home",
@@ -45,12 +58,7 @@ function runApp() {
     }),
   ]);
 
-  middleware_repo.handleMiddleware(router);
   routes_repo.handleRoutes(router);
-
-  router.listen(port, () => {
-    console.log(`Server started at http://localhost:${port}/`);
-  });
 }
 
 runApp();
