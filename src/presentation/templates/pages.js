@@ -1,4 +1,5 @@
 import home from "./pages/home.js";
+import tester from "./pages/tester.js";
 import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "./utilities.js";
 
 export const BASE_PATH = "src/presentation/templates/pages";
@@ -19,4 +20,5 @@ export async function renderPage(page_name, props) {
 
 export default {
   home,
+  tester,
 };

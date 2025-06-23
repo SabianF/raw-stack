@@ -29,6 +29,10 @@ export default class RoutesRepo {
     }
   }
 
+  getRoutes() {
+    return structuredClone(this.#routes);
+  }
+
   /**
    * Adds all routes to the appropriate Express properties
    * @param {express.Express} router

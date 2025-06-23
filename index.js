@@ -34,6 +34,15 @@ function runApp() {
         response.send(home_page);
       },
     }),
+    new Route({
+      name: "Test",
+      method: "GET",
+      route: "/test",
+      handler: async (request, response, next) => {
+        const test_page = await pages.tester({});
+        response.send(test_page);
+      },
+    }),
   ]);
 
   middleware_repo.handleMiddleware(router);
