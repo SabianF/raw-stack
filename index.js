@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import RoutesRepo from "./src/data/repositories/routes.js";
 import Route from "./src/data/models/route.js";
-import pages from "./src/presentation/templates/pages.js";
+import pages from "./src/presentation/pages/pages.js";
 import MiddlewareRepo from "./src/data/repositories/middleware.js";
 import Middleware from "./src/data/models/middleware.js";
 import logRequests from "./src/data/sources/logger.js";

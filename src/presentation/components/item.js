@@ -1,4 +1,4 @@
-import { renderComponent } from "../components.js";
+import { renderComponent } from "./components.js";
 
 /**
  *

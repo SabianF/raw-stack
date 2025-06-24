@@ -1,7 +1,7 @@
-import layout from "./components/layout.js";
-import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "./utilities.js";
+import layout from "./layout.js";
+import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "../../domain/repositories/utilities.js";
 
-export const BASE_PATH = "src/presentation/templates/components";
+const BASE_PATH = "src/presentation/components";
 
 /**
  *

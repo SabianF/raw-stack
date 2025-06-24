@@ -1,5 +1,5 @@
-import { BASE_PATH, renderComponent } from "../components.js";
-import { getAndRenderCss, getAndRenderJs } from "../utilities.js";
+import { renderComponent } from "./components.js";
+import { getAndRenderCss, getAndRenderJs } from "../../domain/repositories/utilities.js";
 
 /**
  *
@@ -26,14 +26,14 @@ export default async function layout(props) {
   ].join("");
 
 
-  const rendered_layout_css = await getAndRenderCss(BASE_PATH + `/${layout_name}.css`, props);
+  const rendered_layout_css = await getAndRenderCss(`./${layout_name}.css`, props);
   if (!props.critical_css) {
     props.critical_css = default_css + rendered_layout_css;
   } else {
     props.critical_css = rendered_layout_css + props.critical_css;
   }
 
-  const rendered_layout_scripts = await getAndRenderJs(BASE_PATH + `/${layout_name}_client.js`, props);
+  const rendered_layout_scripts = await getAndRenderJs(`./${layout_name}_client.js`, props);
   if (!props.critical_scripts) {
     props.critical_scripts = rendered_layout_scripts;
   } else {
