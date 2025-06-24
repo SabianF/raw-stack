@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
-import RoutesRepo from "./src/data/repositories/routes.js";
+import RoutingRepo from "./src/data/repositories/routing.js";
 import Route from "./src/data/models/route.js";
 import pages from "./src/presentation/pages/pages.js";
 import MiddlewareRepo from "./src/data/repositories/middleware.js";
@@ -13,31 +13,46 @@ function runApp() {
   const router = express();
   const port = process.env.PORT;
 
-  includeMiddleware(router);
-  includeRoutes(router);
+  const middleware_repo = new MiddlewareRepo([]);
+  const routing_repo = new RoutingRepo([]);
+
+  addAllMiddleware(middleware_repo);
+  middleware_repo.handleMiddleware(router);
+
+  addAllRoutes(routing_repo);
+  routing_repo.handleRoutes(router);
 
   router.listen(port, () => {
     console.log(`Server started at http://localhost:${port}/`);
   });
 }
 
-function includeMiddleware(router) {
-  const middleware_repo = new MiddlewareRepo([
+/**
+ *
+ * @param {MiddlewareRepo} middleware_repo
+ */
+function addAllMiddleware(middleware_repo) {
+  middleware_repo.addMiddleware(
     new Middleware({
       name: "Request logger",
       handler: logRequests,
     }),
+  );
+
+  middleware_repo.addMiddleware(
     new Middleware({
       name: "Static file server",
       handler: express.static("src/data/sources/public"),
     })
-  ]);
-
-  middleware_repo.handleMiddleware(router);
+  );
 }
 
-function includeRoutes(router) {
-  const routes_repo = new RoutesRepo([
+/**
+ *
+ * @param {RoutingRepo} routing_repo
+ */
+function addAllRoutes(routing_repo) {
+  routing_repo.addRoute(
     new Route({
       name: "Home",
       method: "GET",
@@ -47,6 +62,9 @@ function includeRoutes(router) {
         response.send(home_page);
       },
     }),
+  );
+
+  routing_repo.addRoute(
     new Route({
       name: "Test",
       method: "GET",
@@ -56,9 +74,7 @@ function includeRoutes(router) {
         response.send(test_page);
       },
     }),
-  ]);
-
-  routes_repo.handleRoutes(router);
+  );
 }
 
 runApp();

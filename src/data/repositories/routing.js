@@ -1,7 +1,7 @@
 import express from "express";
 import Route from "../models/route.js";
 
-export default class RoutesRepo {
+export default class RoutingRepo {
   /**
    * @type {Route[]}
    */
@@ -19,7 +19,7 @@ export default class RoutesRepo {
       (typeof routes).toLowerCase() !== "object" ||
       routes.constructor.name.toLowerCase() !== "array"
     ) {
-      throw new Error("valid routes array not provided to " + RoutesRepo.name);
+      throw new Error("valid routes array not provided to " + RoutingRepo.name);
     }
 
     for (let i = 0; i < routes.length; i++) {
@@ -31,6 +31,28 @@ export default class RoutesRepo {
 
   getRoutes() {
     return structuredClone(this.#routes);
+  }
+
+  /**
+   *
+   * @param {Route} route
+   */
+  addRoute(route) {
+    const new_route = new Route(route);
+
+    const existing_route = this.#routes.find(
+      (current_route) => {
+        const current_route_id = current_route.method + current_route.route;
+        const route_id = route.method + route.route;
+        const isMatch = current_route_id === route_id;
+        return isMatch;
+      }
+    );
+    if (existing_route) {
+      throw new Error(new_route.name + " route is already included in " + RoutingRepo.name);
+    }
+
+    this.#routes.push(new_route);
   }
 
   /**
@@ -69,7 +91,7 @@ export default class RoutesRepo {
           break;
 
         default:
-          console.error(`invalid method for ${this.handleRoutes.name}: [${currentRoute.method}]. The fact this happened means the route was changed AFTER it was validated in the constructor of ${RoutesRepo.name}`);
+          console.error(`invalid method for ${this.handleRoutes.name}: [${currentRoute.method}]. The fact this happened means the route was changed AFTER it was validated in the constructor of ${RoutingRepo.name}`);
           break;
       }
     }
