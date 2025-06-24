@@ -1,5 +1,6 @@
 import layout from "./layout.js";
 import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "../../domain/repositories/utilities.js";
+import timestamp from "./timestamp.js";
 
 const BASE_PATH = "src/presentation/components";
 
@@ -21,4 +22,5 @@ export async function renderComponent(component_name, props) {
 
 export default {
   layout,
+  timestamp,
 };

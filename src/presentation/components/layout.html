@@ -40,33 +40,14 @@
       <p>No page body</p>
     {{/body}}
   </main>
-  {{#custom_footer}}
-    {{&.}}
-  {{/custom_footer}}
-  {{^custom_footer}}
-    <footer>
-      <p>
-        Copyright <span id="footer_copyright_year"></span> Sabian Finogwar. All rights reserved
-      </p>
-      <p>
-        <span id="footer_timestamp"></span>
-      </p>
-    </footer>
-    <script>
-      {
-        const date = new Date();
-        const timezone = ` (${Intl.DateTimeFormat().resolvedOptions().timeZone})`;
-
-        footer_copyright_year.innerHTML = date.getFullYear();
-        footer_timestamp.innerHTML = date.toLocaleString() + timezone;
-
-        setInterval(() => {
-          const date = new Date();
-          footer_timestamp.innerHTML = date.toLocaleString() + timezone;
-        }, 1000);
-      }
-    </script>
-  {{/custom_footer}}
+  <footer>
+    {{#custom_footer}}
+      {{&.}}
+    {{/custom_footer}}
+    {{^custom_footer}}
+      <p>No footer</p>
+    {{/custom_footer}}
+  </footer>
   <!--[if IE]><div style="width: 100%; position: fixed; z-index: 1000; bottom: 0; left: 0; background: lightgray;"><p>Outdated browser dectected. Please use a modern browser for a better browsing experience.</p><div onClick="parentNode.remove()">Close [X]</div></div><![endif]-->
 </body>
 </html>

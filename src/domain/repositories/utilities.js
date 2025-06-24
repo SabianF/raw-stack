@@ -88,7 +88,7 @@ export async function renderCss(css_string, props) {
     throw new Error("valid snake_case id not provided");
   }
 
-  const css_tag_data = await getFileAsString("src/presentation/templates/components/style.html");
+  const css_tag_data = await getFileAsString("src/presentation/components/style.html");
   const css_tag_string = css_tag_data.toString();
   const rendered_css = mustache.render(css_tag_string, {
     id: props.id,
@@ -120,7 +120,7 @@ export async function renderJs(js_string, props) {
     throw new Error("valid snake_case id not provided");
   }
 
-  const js_tag_data = await getFileAsString("src/presentation/templates/components/script.html");
+  const js_tag_data = await getFileAsString("src/presentation/components/script.html");
   const js_tag_string = js_tag_data.toString();
   const rendered_js = mustache.render(js_tag_string, {
     id: props.id,
