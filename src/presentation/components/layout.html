@@ -14,24 +14,23 @@
   {{/critical_scripts}}
 </head>
 <body>
-  {{#custom_header}}
-    {{&.}}
-  {{/custom_header}}
-  {{^custom_header}}
-    <header>
+  <header>
+    {{#custom_header}}
+      {{&.}}
+    {{/custom_header}}
+    {{^custom_header}}
       <nav>
-        <ul>
-          {{#nav_menu_links}}
-            <li><a href="{{href}}">{{name}}</a></li>
-          {{/nav_menu_links}}
-          {{^nav_menu_links}}
+        {{#custom_nav}}
+          {{&.}}
+        {{/custom_nav}}
+        {{^custom_nav}}
+          <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/test">Test page</a></li>
-          {{/nav_menu_links}}
-        </ul>
+          </ul>
+        {{/custom_nav}}
       </nav>
-    </header>
-  {{/custom_header}}
+    {{/custom_header}}
+  </header>
   <main>
     {{#body}}
       {{&.}}

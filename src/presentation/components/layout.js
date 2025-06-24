@@ -1,5 +1,6 @@
-import { renderComponent } from "./components.js";
+import components, { renderComponent } from "./components.js";
 import { getAndRenderCss, getAndRenderJs } from "../../domain/repositories/utilities.js";
+import Link from "../../domain/entities/link.js";
 
 /**
  *
@@ -9,9 +10,7 @@ import { getAndRenderCss, getAndRenderJs } from "../../domain/repositories/utili
  * @param {string} props.critical_css
  * @param {string} props.critical_scripts SEO meta
  * @param {string} props.custom_header
- * @param {object[]} props.nav_menu_links
- * @param {string} props.nav_menu_links.href
- * @param {string} props.nav_menu_links.name
+ * @param {string} props.custom_nav
  * @param {string} props.body
  * @param {string} props.custom_footer
  */
@@ -19,6 +18,16 @@ export default async function layout(props) {
   const layout_name = layout.name;
 
   props.id = layout_name;
+
+  const default_nav = await components.page_link_list({
+    links: [
+      new Link("/", "Home"),
+      new Link("/test", "Test page"),
+    ],
+  });
+  if (!props.custom_nav) {
+    props.custom_nav = default_nav;
+  }
 
   const default_css = [
     `<link rel="stylesheet" href="css/pico.classless.min.css">`,

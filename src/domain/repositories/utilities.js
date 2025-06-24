@@ -3,6 +3,46 @@ import { promises as fs } from "node:fs";
 
 /**
  *
+ * @param {string} string
+ * @param {object} options
+ * @param {boolean} options.allow_empty
+ * @param {number} options.min_length
+ * @returns {string} error | ""
+ */
+export function validateString(string, options) {
+  if (string === undefined) {
+    return "string was not provided";
+  }
+  if (typeof string !== "string") {
+    return "string is not of type \"string\"";
+  }
+
+  if (!options) {
+    options = {};
+  }
+
+  const {
+    allow_empty,
+    min_length,
+  } = options;
+
+  if (!allow_empty && string.length === 0) {
+    return "string is empty";
+  }
+
+  if (
+    min_length &&
+    typeof min_length === "number" &&
+    string.length < min_length
+  ) {
+    return `string must be more than ${min_length} characters long`;
+  }
+
+  return "";
+}
+
+/**
+ *
  * @param {string} path
  * @param {object} props placeholders to replace with data
  */
