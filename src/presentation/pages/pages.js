@@ -12,6 +12,7 @@ const BASE_PATH = "src/presentation/pages";
  */
 export async function renderPage(page_name, props) {
   const prefixed_page_name = `${BASE_PATH}/${page_name}`;
+
   const rendered_css = await getAndRenderCss(prefixed_page_name + ".css", props);
   const rendered_js = await getAndRenderJs(prefixed_page_name + "_client.js", props);
   const rendered_page = await getAndRenderHtml(prefixed_page_name + ".html", props);

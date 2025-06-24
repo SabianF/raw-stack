@@ -11,6 +11,7 @@ const BASE_PATH = "src/presentation/components";
  */
 export async function renderComponent(component_name, props) {
   const prefixed_component_name = `${BASE_PATH}/${component_name}`;
+
   const rendered_css = await getAndRenderCss(prefixed_component_name + ".css", props);
   const rendered_js = await getAndRenderJs(prefixed_component_name + "_client.js", props);
   const rendered_component = await getAndRenderHtml(prefixed_component_name + ".html", props);
