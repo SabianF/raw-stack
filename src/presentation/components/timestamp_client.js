@@ -7,7 +7,7 @@
     const hour = date.getHours().toString().padStart(2, "0");
     const minute = date.getMinutes().toString().padStart(2, "0");
     const second = date.getSeconds().toString().padStart(2, "0");
-    const millisecond = date.getMilliseconds().toString().padStart(4, "0");
+    const millisecond = date.getMilliseconds().toString().padStart(3, "0");
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     if (timestamp_year.innerHTML !== year) {
