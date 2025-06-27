@@ -41,7 +41,7 @@ class Component {
   props;
 
   async render() {
-
+    return "";
   }
 }
 
