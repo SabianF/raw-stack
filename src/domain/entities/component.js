@@ -51,7 +51,7 @@ class Component {
       name === null ||
       typeof name !== "string"
     ) {
-      throw new Error("valid name not provided");
+      throw new Error(`valid name not provided: [${JSON.stringify(name)}]`);
     }
 
     this.name = name;
