@@ -58,7 +58,7 @@ function addAllRoutes(routing_repo) {
       method: "GET",
       route: "/",
       handler: async (request, response, next) => {
-        const home_page = await pages.home({});
+        const home_page = await pages.home();
         response.send(home_page);
       },
     }),
@@ -70,7 +70,7 @@ function addAllRoutes(routing_repo) {
       method: "GET",
       route: "/test",
       handler: async (request, response, next) => {
-        const test_page = await pages.tester({});
+        const test_page = await pages.tester();
         response.send(test_page);
       },
     }),
