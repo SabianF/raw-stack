@@ -3,6 +3,7 @@ import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "../../domain/
 import timestamp from "./timestamp.js";
 import page_link_list from "./page_link_list.js";
 import loader from "./loader.js";
+import copyright from "./copyright.js";
 
 const BASE_PATH = "src/presentation/components";
 
@@ -23,6 +24,7 @@ export async function renderComponent(component_name, props) {
 }
 
 export default {
+  copyright,
   layout,
   loader,
   page_link_list,

@@ -6,13 +6,20 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="icon" href="favicon.png">
   <meta name="description" content="{{description}}" />
+
   {{#critical_css}}
     {{&.}}
   {{/critical_css}}
+
   {{#critical_scripts}}
     {{&.}}
   {{/critical_scripts}}
+
   <script src="/js/htmx.2.0.5.min.js"></script>
+
+  {{#preloaded_images}}
+    <link rel="preload" href="{{url}}" as="image">
+  {{/preloaded_images}}
 </head>
 <body>
   <header>
