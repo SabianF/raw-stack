@@ -22,7 +22,7 @@ export default async function layout(props) {
   const default_nav = await components.page_link_list({
     links: [
       new Link("/", "Home"),
-      new Link("/test", "Test page"),
+      new Link("/tester", "Test page"),
     ],
   });
   if (!props.custom_nav) {

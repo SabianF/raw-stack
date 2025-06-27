@@ -66,9 +66,9 @@ function addAllRoutes(routing_repo) {
 
   routing_repo.addRoute(
     new Route({
-      name: "Test",
+      name: "Tester",
       method: "GET",
-      route: "/test",
+      route: "/tester",
       handler: async (request, response, next) => {
         const test_page = await pages.tester();
         response.send(test_page);
