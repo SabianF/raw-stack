@@ -1,6 +1,10 @@
 <div
-  hx-get="{{url}}"
+  hx-trigger="load"
+  hx-get="{{loader_url}}"
   hx-swap="outerHTML"
 >
   <img src="/svg/loading_spinner.svg">
+  {{^loader_url}}
+    No loader_url was provided.
+  {{/loader_url}}
 </div>

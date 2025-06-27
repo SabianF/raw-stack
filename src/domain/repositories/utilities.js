@@ -176,6 +176,7 @@ export async function renderJs(js_string, props) {
  */
 function minify(file_string) {
   const trimmed = file_string.trim();
-  const replaced = trimmed.replace(/\r\n|\n|\r|[ \t\s]{2,}/gm, "");
+  const replaced = trimmed
+    .replace(/\r\n|\n|\r|[\t\s]{1,}/gm, " ");
   return replaced;
 }

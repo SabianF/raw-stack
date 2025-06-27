@@ -42,11 +42,14 @@ export default async function layout(props) {
     props.critical_css = rendered_layout_css + props.critical_css;
   }
 
-  const rendered_layout_scripts = await getAndRenderJs(`./${layout_name}_client.js`, props);
+  const default_scripts = [
+    await getAndRenderJs(`./${layout_name}_client.js`, props),
+  ].join("");
+
   if (!props.critical_scripts) {
-    props.critical_scripts = rendered_layout_scripts;
+    props.critical_scripts = default_scripts;
   } else {
-    props.critical_scripts = rendered_layout_scripts + props.critical_scripts;
+    props.critical_scripts = default_scripts + props.critical_scripts;
   }
 
   const rendered_layout = await renderComponent("layout", props);

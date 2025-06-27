@@ -6,6 +6,7 @@ import pages from "./src/presentation/pages/pages.js";
 import MiddlewareRepo from "./src/data/repositories/middleware.js";
 import Middleware from "./src/data/models/middleware.js";
 import logRequests from "./src/data/sources/logger.js";
+import components from "./src/presentation/components/components.js";
 
 function runApp() {
   dotenv.config();
@@ -70,10 +71,26 @@ function addAllRoutes(routing_repo) {
       method: "GET",
       route: "/tester",
       handler: async (request, response, next) => {
-        const test_page = await pages.tester();
+        const test_page = await pages.tester({
+          loader_url: "/api/tester/content",
+        });
         response.send(test_page);
       },
     }),
+  );
+
+  routing_repo.addRoute(
+    new Route({
+      name: "Tester body",
+      method: "GET",
+      route: "/api/tester/content",
+      handler: async (request, response, next) => {
+        const tester_content = await pages.tester({
+          body_only: true,
+        });
+        response.send(tester_content);
+      },
+    })
   );
 }
 

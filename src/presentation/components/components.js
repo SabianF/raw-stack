@@ -2,6 +2,7 @@ import layout from "./layout.js";
 import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "../../domain/repositories/utilities.js";
 import timestamp from "./timestamp.js";
 import page_link_list from "./page_link_list.js";
+import loader from "./loader.js";
 
 const BASE_PATH = "src/presentation/components";
 
@@ -23,6 +24,7 @@ export async function renderComponent(component_name, props) {
 
 export default {
   layout,
+  loader,
   page_link_list,
   timestamp,
 };
