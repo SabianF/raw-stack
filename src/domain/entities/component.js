@@ -40,8 +40,25 @@ class Component {
    */
   props;
 
+  /**
+   *
+   * @param {string} name
+   * @param {object} props Names of placeholder variables to replace
+   */
+  constructor(name, props) {
+    if (
+      !name ||
+      name === null ||
+      typeof name !== "string"
+    ) {
+      throw new Error("valid name not provided");
+    }
+
+    this.name = name;
+  }
+
   async render() {
-    return "";
+    throw new Error(`${this.render.name} not implemented.`);
   }
 }
 

@@ -1,14 +1,25 @@
 import component from "./component.js";
 
-describe(component.Component.name, async () => {
+describe(component.Component.name, () => {
 
-  const test_component = new component.Component();
+  describe("constructor", () => {
 
-  describe(test_component.render, async () => {
-
-    test("returns string", async () => {
-      const html = await test_component.render();
-      expect(typeof html).toEqual("string");
+    describe.each([
+      {
+        name: undefined,
+      },
+      {
+        name: null,
+      },
+      {
+        name: "",
+      },
+    ])("throws on invalid name", (name) => {
+      test(JSON.stringify(name), async () => {
+        expect(() => {
+          new component.Component(name);
+        }).toThrow(Error);
+      });
     });
   });
 });
