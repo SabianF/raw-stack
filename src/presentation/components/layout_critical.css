@@ -1,3 +1,15 @@
+a {
+  color: lightblue;
+}
+
+a:hover {
+  color: white;
+}
+
+a:visited {
+  color: lightskyblue;
+}
+
 body {
   display: grid;
   grid-template-columns: 15% 85%;
@@ -6,6 +18,7 @@ body {
 
 body > header {
   background-color: #222222;
+  padding-top: 64px !important;
 }
 
 body > header > aside {
@@ -15,4 +28,8 @@ body > header > aside {
 
 body > header > aside > nav > ul > li:hover {
   background-color: #333333;
+}
+
+body > main {
+  padding-top: 64px !important;
 }

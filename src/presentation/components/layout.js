@@ -40,9 +40,6 @@ export default async function layout(props) {
     props.critical_css = rendered_layout_css + props.critical_css;
   }
 
-  console.log("rendered_layout_css:");
-  console.log(rendered_layout_css);
-
   const default_scripts = [
     await getAndRenderJs(`./${layout_name}_client.js`, props),
   ].join("");
