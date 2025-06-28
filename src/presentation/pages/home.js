@@ -1,5 +1,5 @@
 import components from "../components.js";
-import { renderPage } from "./pages.js";
+import { renderPage } from "../pages.js";
 
 /**
  *

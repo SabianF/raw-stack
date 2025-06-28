@@ -1,6 +1,6 @@
-import home from "./home.js";
-import tester from "./tester.js";
-import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "../../domain/repositories/utilities.js";
+import home from "./pages/home.js";
+import tester from "./pages/tester.js";
+import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "../domain/repositories/utilities.js";
 
 const BASE_PATH = "src/presentation/pages";
 
