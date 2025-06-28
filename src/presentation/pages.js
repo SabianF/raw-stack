@@ -1,6 +1,7 @@
 import home from "./pages/home.js";
-import tester from "./pages/tester.js";
 import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "../domain/repositories/utilities.js";
+import tester from "./pages/tester.js";
+import form from "./pages/form.js";
 
 const BASE_PATH = "src/presentation/pages";
 
@@ -22,5 +23,6 @@ export async function renderPage(page_name, props) {
 
 export default {
   home,
+  form,
   tester,
 };

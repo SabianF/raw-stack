@@ -1,0 +1,12 @@
+<div id="{{id}}">
+  <div>
+    <label>Name</label><input name="name" type="text" placeholder="John Smith">
+  </div>
+  <div>
+    <label>Email</label><input name="email" type="email" placeholder="john.smith@email.com">
+  </div>
+  <div>
+    <label>Phone</label><input name="phone" value="email" type="number" placeholder="(123) 456-7890">
+  </div>
+  <button hx-post="/api/form/submit" hx-target="#form">Submit</button>
+</div>

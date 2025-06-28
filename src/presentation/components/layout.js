@@ -24,6 +24,7 @@ export default async function layout(props) {
     links: [
       new Link("/", "Home"),
       new Link("/tester", "Test page"),
+      new Link("/form", "Form"),
     ],
   });
   if (!props.custom_nav) {

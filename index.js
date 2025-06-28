@@ -91,6 +91,44 @@ function addAllRoutes(routing_repo) {
       },
     })
   );
+
+  routing_repo.addRoute(
+    new Route({
+      name: "Form",
+      method: "GET",
+      route: "/form",
+      handler: async (request, response, next) => {
+        const form_page = await pages.form();
+        response.send(form_page);
+      },
+    })
+  );
+
+  routing_repo.addRoute(
+    new Route({
+      name: "Form submit",
+      method: "POST",
+      route: "/api/form/submit",
+      handler: async (request, response, next) => {
+        const form_result = `<p>Form submitted!</p><button hx-get="/api/form/data" hx-target="#form">Return</button>`;
+        response.send(form_result);
+      },
+    })
+  );
+
+  routing_repo.addRoute(
+    new Route({
+      name: "Form data",
+      method: "GET",
+      route: "/api/form/data",
+      handler: async (request, response, next) => {
+        const form_data = await pages.form({
+          data_only: true,
+        });
+        response.send(form_data);
+      },
+    })
+  );
 }
 
 runApp();
