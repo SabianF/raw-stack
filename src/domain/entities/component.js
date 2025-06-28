@@ -57,6 +57,7 @@ class Component {
     }
 
     this.name = name;
+    this.props = props;
   }
 
   async render() {
