@@ -1,3 +1,8 @@
+* {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
 a {
   color: lightblue;
 }
@@ -18,7 +23,6 @@ body {
 
 body > header {
   background-color: #222222;
-  padding-top: 64px !important;
 }
 
 body > header > aside {
@@ -28,8 +32,4 @@ body > header > aside {
 
 body > header > aside > nav > ul > li:hover {
   background-color: #333333;
-}
-
-body > main {
-  padding-top: 64px !important;
 }
