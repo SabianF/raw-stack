@@ -16,8 +16,6 @@ a:visited {
 }
 
 body {
-  display: grid;
-  grid-template-columns: 15% 85%;
   min-height: 100vh;
 }
 
@@ -32,4 +30,52 @@ body > header > aside {
 
 body > header > aside > nav > ul > li:hover {
   background-color: #333333;
+}
+
+@media screen and (min-width: 768px){
+  body {
+    display: grid;
+    grid-template-columns: 15% 85%;
+  }
+
+  body > header > aside > nav > #nav_mobile_icon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  body {
+    display: grid;
+    grid-template-columns: 20% 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    display: block;
+  }
+
+  body > header {
+    display: flex;
+    justify-content: right;
+    text-align: right;
+  }
+
+  body > header > aside > nav {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  body > header > aside > nav > * {
+    display: none;
+  }
+
+  body > header > aside > nav > #nav_mobile_icon {
+    display: block;
+  }
+
+  body > header > aside > nav:hover * {
+    display: block;
+  }
 }
