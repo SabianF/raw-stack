@@ -2,35 +2,6 @@ import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "../repositori
 
 const BASE_PATH = "src/presentation/components";
 
-export class ComponentProps {
-  /**
-   * @type {object?} Placeholders to replace in the CSS
-   */
-  css;
-
-  /**
-   * @type {object?} Placeholders to replace in the HTML
-   */
-  html;
-
-  /**
-   * @type {object?} Placeholders to replace in the JavaScript
-   */
-  js;
-
-  /**
-   *
-   * @param {object} props
-   */
-  addCss(props) {
-    console.log("Logging placeholder variable names to replace in CSS (keys):");
-
-    for (const key in props) {
-      console.log(key);
-    }
-  }
-}
-
 export class Component {
   /**
    * @type {string}
@@ -94,6 +65,5 @@ export class Component {
 }
 
 export default {
-  ComponentProps,
   Component,
 };
