@@ -1,4 +1,4 @@
-import components from "../../presentation/components/components.js";
+import components from "../../presentation/components.js";
 import component from "./component.js";
 
 describe(component.Component.name, () => {

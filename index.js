@@ -6,7 +6,7 @@ import pages from "./src/presentation/pages/pages.js";
 import MiddlewareRepo from "./src/data/repositories/middleware.js";
 import Middleware from "./src/data/models/middleware.js";
 import logRequests from "./src/data/sources/logger.js";
-import components from "./src/presentation/components/components.js";
+import components from "./src/presentation/components.js";
 import component from "./src/domain/entities/component.js";
 
 function runApp() {

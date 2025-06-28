@@ -1,4 +1,4 @@
-import components from "./components.js";
+import components from "../components.js";
 import { getAndRenderCss, getAndRenderJs } from "../../domain/repositories/utilities.js";
 import Link from "../../domain/entities/link.js";
 import { Component } from "../../domain/entities/component.js";
