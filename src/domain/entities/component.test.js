@@ -14,6 +14,12 @@ describe(component.Component.name, () => {
       {
         name: "",
       },
+      {
+        name: "name with spaces",
+      },
+      {
+        name: "name-with-hyphens",
+      },
     ])("throws on invalid name", (invalid_input) => {
       test(JSON.stringify(invalid_input.name), async () => {
         expect(() => {

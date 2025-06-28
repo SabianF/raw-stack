@@ -49,7 +49,9 @@ class Component {
     if (
       !name ||
       name === null ||
-      typeof name !== "string"
+      typeof name !== "string" ||
+      name.includes(" ") ||
+      name.includes("-")
     ) {
       throw new Error(`valid name not provided: [${JSON.stringify(name)}]`);
     }
