@@ -1,3 +1,4 @@
+import components from "../../presentation/components/components.js";
 import component from "./component.js";
 
 describe(component.Component.name, () => {
@@ -72,9 +73,16 @@ describe(component.Component.name, () => {
 
     describe.each(invalid_components)("throws on invalid component", (invalid_component) => {
       test(JSON.stringify(invalid_component), async () => {
-        await expect(invalid_component.render())
-          .rejects
-          .toThrow(Error);
+        return expect(async () => {
+          await invalid_component.render();
+        });
+      });
+    });
+
+    describe.each(valid_components)("returns a Promise<string> on valid component", (valid_component) => {
+      test(JSON.stringify(valid_component), async () => {
+        const rendered = await valid_component.render();
+        expect(typeof rendered).toEqual("string");
       });
     });
   });

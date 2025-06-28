@@ -102,6 +102,10 @@ export function renderHtml(html_string, props) {
     return "";
   }
 
+  if (!props) {
+    props = {};
+  }
+
   const rendered_html = mustache.render(html_string, props);
   return minify(rendered_html);
 }
@@ -115,6 +119,10 @@ export function renderHtml(html_string, props) {
 export async function renderCss(css_string, props) {
   if (!css_string) {
     return "";
+  }
+
+  if (!props) {
+    props = {};
   }
 
   if (
@@ -147,6 +155,10 @@ export async function renderCss(css_string, props) {
 export async function renderJs(js_string, props) {
   if (!js_string) {
     return "";
+  }
+
+  if (!props) {
+    props = {};
   }
 
   if (
