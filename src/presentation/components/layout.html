@@ -11,6 +11,8 @@
     {{&.}}
   {{/critical_css}}
 
+  <link rel="stylesheet" href="css/pico.classless.min.css">
+
   {{#critical_scripts}}
     {{&.}}
   {{/critical_scripts}}
@@ -27,16 +29,18 @@
       {{&.}}
     {{/custom_header}}
     {{^custom_header}}
-      <nav hx-boost="true">
-        {{#custom_nav}}
-          {{&.}}
-        {{/custom_nav}}
-        {{^custom_nav}}
-          <ul>
-            <li><a href="/">Home</a></li>
-          </ul>
-        {{/custom_nav}}
-      </nav>
+      <aside>
+        <nav hx-boost="true">
+          {{#custom_nav}}
+            {{&.}}
+          {{/custom_nav}}
+          {{^custom_nav}}
+            <ul>
+              <li><a href="/">Home</a></li>
+            </ul>
+          {{/custom_nav}}
+        </nav>
+      </aside>
     {{/custom_header}}
   </header>
   <main>
@@ -46,15 +50,15 @@
     {{^body}}
       <p>No page body</p>
     {{/body}}
+    <footer>
+      {{#custom_footer}}
+        {{&.}}
+      {{/custom_footer}}
+      {{^custom_footer}}
+        <p>No footer</p>
+      {{/custom_footer}}
+    </footer>
   </main>
-  <footer>
-    {{#custom_footer}}
-      {{&.}}
-    {{/custom_footer}}
-    {{^custom_footer}}
-      <p>No footer</p>
-    {{/custom_footer}}
-  </footer>
   <!--[if IE]><div style="width: 100%; position: fixed; z-index: 1000; bottom: 0; left: 0; background: lightgray;"><p>Outdated browser dectected. Please use a modern browser for a better browsing experience.</p><div onClick="parentNode.remove()">Close [X]</div></div><![endif]-->
 </body>
 </html>
