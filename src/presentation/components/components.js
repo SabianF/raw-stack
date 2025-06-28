@@ -1,6 +1,5 @@
 import layout from "./layout.js";
 import { getAndRenderCss, getAndRenderHtml, getAndRenderJs } from "../../domain/repositories/utilities.js";
-import timestamp from "./timestamp.js";
 import page_link_list from "./page_link_list.js";
 import loader from "./loader.js";
 import copyright from "./copyright.js";
@@ -28,5 +27,4 @@ export default {
   layout,
   loader,
   page_link_list,
-  timestamp,
 };

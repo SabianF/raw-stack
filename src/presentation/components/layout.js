@@ -52,10 +52,7 @@ export default async function layout(props) {
     props.critical_scripts = default_scripts + props.critical_scripts;
   }
 
-  const default_footer = (
-    await components.timestamp() +
-    await components.copyright()
-  );
+  const default_footer = await components.copyright();
 
   if (!props.custom_footer) {
     props.custom_footer = default_footer;
