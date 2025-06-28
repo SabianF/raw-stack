@@ -1,3 +1,5 @@
+import { renderComponent } from "../../presentation/components/components.js";
+
 const BASE_PATH = "src/presentation/components";
 
 class ComponentProps {
@@ -61,7 +63,13 @@ class Component {
   }
 
   async render() {
-    throw new Error(`${this.render.name} not implemented.`);
+    const rendered = await renderComponent(this.name, this.props);
+
+    if (rendered === "") {
+      throw new Error(`failed to render component: ${JSON.stringify}`);
+    }
+
+    return rendered;
   }
 }
 

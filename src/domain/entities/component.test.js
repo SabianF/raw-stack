@@ -34,8 +34,8 @@ describe(component.Component.name, () => {
       },
     ];
 
-    describe.each(invalid_inputs)("on invalid input", (invalid_input) => {
-      test(`[${JSON.stringify(invalid_input.name)}] throws Error`, async () => {
+    describe.each(invalid_inputs)("throws error on invalid input", (invalid_input) => {
+      test(JSON.stringify(invalid_input.name), async () => {
         expect(() => {
           new component.Component(invalid_input.name);
         }).toThrow(Error);
@@ -44,14 +44,18 @@ describe(component.Component.name, () => {
 
     describe.each(valid_inputs)("on valid input", (valid_input) => {
 
-      test(`[${JSON.stringify(valid_input)}] returns Component`, async () => {
-        const comp = new component.Component(valid_input.name);
-        expect(comp.constructor.name).toBe(component.Component.name);
+      describe("returns Component", () => {
+        test(JSON.stringify(valid_input), async () => {
+          const comp = new component.Component(valid_input.name);
+          expect(comp.constructor.name).toBe(component.Component.name);
+        });
       });
 
-      test("assigns name to Component.name", () => {
-        const comp = new component.Component(valid_input.name);
-        expect(comp.name).toEqual(valid_input.name);
+      describe("assigns name to Component.name", () => {
+        test(JSON.stringify(valid_input), async () => {
+          const comp = new component.Component(valid_input.name);
+          expect(comp.name).toEqual(valid_input.name);
+        });
       });
     });
 
@@ -66,11 +70,11 @@ describe(component.Component.name, () => {
       new component.Component("layout"),
     ];
 
-    describe("throws on invalid component", (invalid_component) => {
-      test.each(invalid_components)(JSON.stringify(invalid_component), async () => {
-        expect(() => {
-          invalid_component.render();
-        }).toThrow();
+    describe.each(invalid_components)("throws on invalid component", (invalid_component) => {
+      test(JSON.stringify(invalid_component), async () => {
+        await expect(invalid_component.render())
+          .rejects
+          .toThrow(Error);
       });
     });
   });
