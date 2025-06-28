@@ -1,12 +1,12 @@
-import { renderComponent } from "./components.js";
+import { Component } from "../../domain/entities/component.js";
 
 export default async function copyright() {
-  const year = new Date().getFullYear();
-
-  const component = await renderComponent(copyright.name, {
+  const props = {
     id: copyright.name,
-    year: year,
-  });
+    year: new Date().getFullYear(),
+  };
 
-  return component;
+  const component = new Component("copyright", props);
+
+  return component.render();
 }

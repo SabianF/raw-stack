@@ -1,4 +1,4 @@
-import { renderComponent } from "./components.js";
+import { Component } from "../../domain/entities/component.js";
 
 /**
  *
@@ -8,5 +8,7 @@ import { renderComponent } from "./components.js";
 export default function loader(props) {
   props.id = "loader";
 
-  return renderComponent("loader", props);
+  const loader_component = new Component("loader", props);
+
+  return loader_component.render();
 }

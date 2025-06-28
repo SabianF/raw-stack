@@ -1,5 +1,5 @@
+import { Component } from "../../domain/entities/component.js";
 import Link from "../../domain/entities/link.js";
-import { renderComponent } from "./components.js";
 
 /**
  *
@@ -9,5 +9,7 @@ import { renderComponent } from "./components.js";
 export default async function page_link_list(props) {
   props.id = page_link_list.name;
 
-  return renderComponent(page_link_list.name, props);
+  const page_link_list_component = new Component("page_link_list", props);
+
+  return page_link_list_component.render();
 }

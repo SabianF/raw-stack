@@ -1,6 +1,7 @@
-import components, { renderComponent } from "./components.js";
+import components from "./components.js";
 import { getAndRenderCss, getAndRenderJs } from "../../domain/repositories/utilities.js";
 import Link from "../../domain/entities/link.js";
+import { Component } from "../../domain/entities/component.js";
 
 /**
  *
@@ -58,7 +59,7 @@ export default async function layout(props) {
     props.custom_footer = default_footer;
   }
 
-  const rendered_layout = await renderComponent("layout", props);
+  const layout_component = new Component("layout", props);
 
-  return rendered_layout;
+  return layout_component.render();
 }
