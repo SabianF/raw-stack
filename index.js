@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
+import bodyParser from "body-parser";
 import RoutingRepo from "./src/data/repositories/routing.js";
 import Route from "./src/data/models/route.js";
 import pages from "./src/presentation/pages.js";
@@ -43,6 +44,15 @@ function addAllMiddleware(middleware_repo) {
     new Middleware({
       name: "Static file server",
       handler: express.static("src/data/sources/public"),
+    })
+  );
+
+  middleware_repo.addMiddleware(
+    new Middleware({
+      name: "Form data parser",
+      handler: bodyParser.urlencoded({
+        extended: true,
+      }),
     })
   );
 }
@@ -110,7 +120,17 @@ function addAllRoutes(routing_repo) {
       method: "POST",
       route: "/api/form/submit",
       handler: async (request, response, next) => {
-        const form_result = `<p>Form submitted!</p><button hx-get="/api/form/data" hx-target="#form">Return</button>`;
+        console.log("Form submission data:");
+        console.log(request.body);
+        const form_result = `
+          <p>Form submitted! Thank you, ${request.body.name}!</p>
+          <button
+            hx-get="/api/form/data"
+            hx-target="#form"
+          >
+            Return
+          </button>
+        `;
         response.send(form_result);
       },
     })
